@@ -4,6 +4,7 @@
 	<name>nalbam-common</name>
 	<url>http://nalbam.com</url>
 
+
 	<groupId>com.nalbam</groupId>
 	<artifactId>nalbam-common</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
