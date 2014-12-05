@@ -23,11 +23,6 @@
 
 	<repositories>
 		<repository>
-			<id>${repository.id}</id>
-			<name>${repository.name}</name>
-			<url>${repository.url}</url>
-		</repository>
-		<repository>
 			<id>maven</id>
 			<name>maven</name>
 			<url>http://repo1.maven.org/maven2</url>
@@ -36,6 +31,11 @@
 			<id>egovframe</id>
 			<name>egovframe</name>
 			<url>http://www.egovframe.go.kr/maven</url>
+		</repository>
+		<repository>
+			<id>${repository.id}</id>
+			<name>${repository.name}</name>
+			<url>${repository.url}</url>
 		</repository>
 	</repositories>
 
