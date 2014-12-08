@@ -1,6 +1,6 @@
 package com.nalbam.common.sample;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 파일설명 :
