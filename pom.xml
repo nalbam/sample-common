@@ -68,11 +68,6 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.3.2</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.3.6</version>
-		</dependency>
 
 		<!-- Spring and Transactions -->
 		<dependency>
