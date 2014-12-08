@@ -41,11 +41,6 @@
 			<url>http://repo1.maven.org/maven2</url>
 		</repository>
 		<repository>
-			<id>egovframe</id>
-			<name>egovframe</name>
-			<url>http://www.egovframe.go.kr/maven</url>
-		</repository>
-		<repository>
 			<id>${repository.id}</id>
 			<name>${repository.name}</name>
 			<url>${repository.url}</url>
