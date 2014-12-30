@@ -6,7 +6,7 @@
 
 	<groupId>com.nalbam</groupId>
 	<artifactId>nalbam-common</artifactId>
-	<version>1.2.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -16,7 +16,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Spring -->
-		<spring.version>4.1.3.RELEASE</spring.version>
+		<spring.version>4.1.4.RELEASE</spring.version>
 
 		<!-- Hibernate -->
 		<hibernate.version>4.3.7.Final</hibernate.version>
