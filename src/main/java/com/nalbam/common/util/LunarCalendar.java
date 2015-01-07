@@ -8,32 +8,25 @@ import com.ibm.icu.util.ChineseCalendar;
 public class LunarCalendar {
 
 	/**
-	 * 양력(yyyyMMdd) -> 음력(yyyyMMdd)
+	 * 양력(yyyy-MM-dd) -> 음력(yyyy-MM-dd)
 	 */
-	public static String toLunar(String yyyymmdd) {
-		if (StringUtils.isEmpty(yyyymmdd)) {
+	public static String toLunar(String ymd) {
+		if (StringUtils.isEmpty(ymd)) {
 			return "";
 		}
 
-		String date = yyyymmdd.trim().replace("-", "");
+		ymd = ymd.trim().replace("-", "");
 
-		if (date.length() != 8) {
-			if (date.length() == 4)
-				date = date + "0101";
-			else if (date.length() == 6)
-				date = date + "01";
-			else if (date.length() > 8)
-				date = date.substring(0, 8);
-			else
-				return "";
+		if (ymd.length() != 8) {
+			return "";
 		}
 
 		Calendar cal = Calendar.getInstance();
 		ChineseCalendar cc = new ChineseCalendar();
 
-		cal.set(Calendar.YEAR, Integer.parseInt(date.substring(0, 4)));
-		cal.set(Calendar.MONTH, Integer.parseInt(date.substring(4, 6)) - 1);
-		cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date.substring(6)));
+		cal.set(Calendar.YEAR, Integer.parseInt(ymd.substring(0, 4)));
+		cal.set(Calendar.MONTH, Integer.parseInt(ymd.substring(4, 6)) - 1);
+		cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(ymd.substring(6)));
 
 		cc.setTimeInMillis(cal.getTimeInMillis());
 
@@ -43,53 +36,34 @@ public class LunarCalendar {
 		int m = cc.get(ChineseCalendar.MONTH) + 1;
 		int d = cc.get(ChineseCalendar.DAY_OF_MONTH);
 
-		StringBuffer ret = new StringBuffer();
-		if (y < 1000)
-			ret.append("0");
-		else if (y < 100)
-			ret.append("00");
-		else if (y < 10)
-			ret.append("000");
-		ret.append(y);
+		StringBuilder sb = new StringBuilder();
+		sb.append(StringUtils.leftPad(y + "", 4, "0")).append("-");
+		sb.append(StringUtils.leftPad(m + "", 2, "0")).append("-");
+		sb.append(StringUtils.leftPad(d + "", 2, "0"));
 
-		if (m < 10)
-			ret.append("0");
-		ret.append(m);
-
-		if (d < 10)
-			ret.append("0");
-		ret.append(d);
-
-		return ret.toString();
+		return sb.toString();
 	}
 
 	/**
-	 * 음력(yyyyMMdd) -> 양력(yyyyMMdd)
+	 * 음력(yyyy-MM-dd) -> 양력(yyyy-MM-dd)
 	 */
-	public static String toSolar(String yyyymmdd) {
-		if (StringUtils.isEmpty(yyyymmdd)) {
+	public static String toSolar(String ymd) {
+		if (StringUtils.isEmpty(ymd)) {
 			return "";
 		}
 
-		String date = yyyymmdd.trim().replace("-", "");
+		ymd = ymd.trim().replace("-", "");
 
-		if (date.length() != 8) {
-			if (date.length() == 4)
-				date = date + "0101";
-			else if (date.length() == 6)
-				date = date + "01";
-			else if (date.length() > 8)
-				date = date.substring(0, 8);
-			else
-				return "";
+		if (ymd.length() != 8) {
+			return "";
 		}
 
 		Calendar cal = Calendar.getInstance();
 		ChineseCalendar cc = new ChineseCalendar();
 
-		cc.set(ChineseCalendar.EXTENDED_YEAR, Integer.parseInt(date.substring(0, 4)) + 2637);
-		cc.set(ChineseCalendar.MONTH, Integer.parseInt(date.substring(4, 6)) - 1);
-		cc.set(ChineseCalendar.DAY_OF_MONTH, Integer.parseInt(date.substring(6)));
+		cc.set(ChineseCalendar.EXTENDED_YEAR, Integer.parseInt(ymd.substring(0, 4)) + 2637);
+		cc.set(ChineseCalendar.MONTH, Integer.parseInt(ymd.substring(4, 6)) - 1);
+		cc.set(ChineseCalendar.DAY_OF_MONTH, Integer.parseInt(ymd.substring(6)));
 
 		cal.setTimeInMillis(cc.getTimeInMillis());
 
@@ -97,24 +71,12 @@ public class LunarCalendar {
 		int m = cal.get(Calendar.MONTH) + 1;
 		int d = cal.get(Calendar.DAY_OF_MONTH);
 
-		StringBuffer ret = new StringBuffer();
-		if (y < 1000)
-			ret.append("0");
-		else if (y < 100)
-			ret.append("00");
-		else if (y < 10)
-			ret.append("000");
-		ret.append(y);
+		StringBuilder sb = new StringBuilder();
+		sb.append(StringUtils.leftPad(y + "", 4, "0")).append("-");
+		sb.append(StringUtils.leftPad(m + "", 2, "0")).append("-");
+		sb.append(StringUtils.leftPad(d + "", 2, "0"));
 
-		if (m < 10)
-			ret.append("0");
-		ret.append(m);
-
-		if (d < 10)
-			ret.append("0");
-		ret.append(d);
-
-		return ret.toString();
+		return sb.toString();
 	}
 
 	public static void main(String args[]) {
