@@ -103,6 +103,13 @@
 			<version>${hibernate.validator.version}</version>
 		</dependency>
 
+		<!-- International Component for Unicode for Java (ICU4J) -->
+		<dependency>
+			<groupId>com.ibm.icu</groupId>
+			<artifactId>icu4j</artifactId>
+			<version>54.1.1</version>
+		</dependency>
+
 		<!-- Test Artifacts -->
 		<dependency>
 			<groupId>org.springframework</groupId>
