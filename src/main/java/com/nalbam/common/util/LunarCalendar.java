@@ -15,7 +15,8 @@ public class LunarCalendar {
 			return "";
 		}
 
-		String date = yyyymmdd.trim();
+		String date = yyyymmdd.trim().replace("-", "");
+
 		if (date.length() != 8) {
 			if (date.length() == 4)
 				date = date + "0101";
@@ -70,7 +71,8 @@ public class LunarCalendar {
 			return "";
 		}
 
-		String date = yyyymmdd.trim();
+		String date = yyyymmdd.trim().replace("-", "");
+
 		if (date.length() != 8) {
 			if (date.length() == 4)
 				date = date + "0101";
