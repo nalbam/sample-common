@@ -1,4 +1,4 @@
-package com.nalbam.common.util.test;
+package com.nalbam.common.util;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
