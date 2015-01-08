@@ -79,14 +79,4 @@ public class LunarCalendar {
 		return sb.toString();
 	}
 
-	public static void main(String args[]) {
-		String str = null;
-
-		str = "19800214";
-		System.out.println(str + " -> " + LunarCalendar.toLunar(str));
-
-		str = "19791228";
-		System.out.println(str + " -> " + LunarCalendar.toSolar(str));
-	}
-
 }
