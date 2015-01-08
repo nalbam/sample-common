@@ -167,11 +167,6 @@
 					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
-		</plugins>
-	</build>
-
-	<reporting>
-		<plugins>
 			<!-- cobertura -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -182,8 +177,16 @@
 						<format>xml</format>
 					</formats>
 				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>cobertura</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
-	</reporting>
+	</build>
 
 </project>
