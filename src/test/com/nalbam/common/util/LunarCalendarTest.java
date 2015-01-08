@@ -20,7 +20,10 @@ public class LunarCalendarTest {
 		String var1 = LunarCalendar.toLunar(str1);
 		String var2 = LunarCalendar.toSolar(str2);
 
+		System.out.println("[" + str1 + "] == [" + var2 + "]");
 		assertEquals(str1, var2);
+
+		System.out.println("[" + str2 + "] == [" + var1 + "]");
 		assertEquals(str2, var1);
 	}
 
