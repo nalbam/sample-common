@@ -12,17 +12,17 @@ import org.junit.Test;
 
 public class LunarCalendarTest {
 
-	// @Test
-	// public void testConvert() {
-	// String str1 = "1980-02-14";
-	// String str2 = "1979-12-28";
-	//
-	// String var1 = LunarCalendar.toLunar(str1);
-	// String var2 = LunarCalendar.toSolar(str2);
-	//
-	// assertEquals(str1, var2);
-	// assertEquals(str2, var1);
-	// }
+	@Test
+	public void testConvert() {
+		String str1 = "1980-02-14";
+		String str2 = "1979-12-28";
+
+		String var1 = LunarCalendar.toLunar(str1);
+		String var2 = LunarCalendar.toSolar(str2);
+
+		assertEquals(str1, var2);
+		assertEquals(str2, var1);
+	}
 
 	@Test
 	public void test() {
