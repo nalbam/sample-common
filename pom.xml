@@ -136,6 +136,17 @@
 		</extensions>
 
 		<plugins>
+			<!-- eclipse javadoc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+					<wtpversion>2.0</wtpversion>
+				</configuration>
+			</plugin>
 			<!-- maven compiler -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -147,15 +158,15 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-			<!-- eclipse javadoc -->
+			<!-- maven surefire -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
 				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>true</downloadJavadocs>
-					<wtpversion>2.0</wtpversion>
+					<excludes>
+						<exclude>**/*Test.java</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 			<!-- cobertura -->
