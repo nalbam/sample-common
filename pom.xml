@@ -156,6 +156,17 @@
 					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
+			<!-- eclipse javadoc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+					<wtpversion>2.0</wtpversion>
+				</configuration>
+			</plugin>
 			<!-- cobertura report -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -166,17 +177,6 @@
 						<format>html</format>
 						<format>xml</format>
 					</formats>
-				</configuration>
-			</plugin>
-			<!-- eclipse javadoc -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>true</downloadJavadocs>
-					<wtpversion>2.0</wtpversion>
 				</configuration>
 			</plugin>
 		</plugins>
