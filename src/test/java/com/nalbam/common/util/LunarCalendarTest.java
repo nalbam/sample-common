@@ -30,4 +30,16 @@ public class LunarCalendarTest {
 		assertEquals(var2, "");
 	}
 
+	@Test
+	public void testLength() {
+		String str1 = "111";
+		String str2 = "222";
+
+		String var1 = LunarCalendar.toLunar(str1);
+		String var2 = LunarCalendar.toSolar(str2);
+
+		assertEquals(var1, "");
+		assertEquals(var2, "");
+	}
+
 }
