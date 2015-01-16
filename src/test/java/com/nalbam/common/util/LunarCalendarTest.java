@@ -1,6 +1,7 @@
 package com.nalbam.common.util;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
@@ -20,12 +21,15 @@ public class LunarCalendarTest {
 
 	@Test
 	public void testNull() {
+		LunarCalendar lc = new LunarCalendar();
+
 		String str1 = null;
 		String str2 = null;
 
 		String var1 = LunarCalendar.toLunar(str1);
 		String var2 = LunarCalendar.toSolar(str2);
 
+		assertNotNull(lc);
 		assertEquals(var1, "");
 		assertEquals(var2, "");
 	}
