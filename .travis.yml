@@ -5,4 +5,4 @@ jdk:
   - oraclejdk7
 
 script:
-  mvn install -DskipTests=true
+  mvn deploy --settings settings.xml
