@@ -5,4 +5,7 @@ jdk:
   - oraclejdk7
 
 script:
-  mvn deploy --settings settings.xml
+  mvn deploy org.eluder.coveralls:coveralls-maven-plugin:cobertura --settings settings.xml
+
+#after_success:
+#  mvn clean cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:cobertura
