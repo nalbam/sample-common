@@ -4,6 +4,9 @@ language: java
 jdk:
   - oraclejdk7
 
+install:
+  - mvn -s settings.xml -version
+
 script:
   - mvn -s settings.xml clean deploy
 
