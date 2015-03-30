@@ -4,8 +4,8 @@ language: java
 jdk:
   - oraclejdk7
 
-install:
-  - mvn -s settings.xml clean install
-
 script:
+  - mvn -s settings.xml clean deploy
+
+after_success:
   - mvn -s settings.xml cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:report
