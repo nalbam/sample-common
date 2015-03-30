@@ -30,7 +30,7 @@
 		<!-- Repository -->
 		<repository.id>smartforge</repository.id>
 		<repository.name>smartforge</repository.name>
-		<repository.url>http://repo.smartforge.kr/maven2</repository.url>
+		<repository.url>http://repo.smartforge.io/maven2</repository.url>
 	</properties>
 
 	<repositories>
