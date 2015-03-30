@@ -5,7 +5,7 @@ jdk:
   - oraclejdk7
 
 install:
-  - mvn -s settings.xml -version -B
+  - mvn -s settings.xml clean install
 
 script:
-  - mvn -s settings.xml clean cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:report
+  - mvn -s settings.xml cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:report
