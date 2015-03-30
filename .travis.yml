@@ -8,7 +8,7 @@ install:
   - mvn -s settings.xml -version
 
 script:
-  - mvn -s settings.xml clean deploy
+  - mvn -s settings.xml clean install
 
 after_success:
   - mvn -s settings.xml cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:report
