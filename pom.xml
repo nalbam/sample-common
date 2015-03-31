@@ -30,7 +30,7 @@
 		<!-- Repository -->
 		<repository.id>nalbam</repository.id>
 		<repository.name>nalbam</repository.name>
-		<repository.url>http://nalbam.io/maven2</repository.url>
+		<repository.url>http://repo.nalbam.io/maven2</repository.url>
 	</properties>
 
 	<repositories>
