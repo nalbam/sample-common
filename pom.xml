@@ -28,9 +28,9 @@
 		<junit.version>4.12</junit.version>
 
 		<!-- Repository -->
-		<repository.id>smartforge</repository.id>
-		<repository.name>smartforge</repository.name>
-		<repository.url>http://repo.smartforge.io/maven2</repository.url>
+		<repository.id>nalbam</repository.id>
+		<repository.name>nalbam</repository.name>
+		<repository.url>http://nalbam.io/maven2</repository.url>
 	</properties>
 
 	<repositories>
