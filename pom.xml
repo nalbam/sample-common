@@ -34,19 +34,6 @@
         <repository.url>http://repo.nalbam.io/maven2</repository.url>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>maven</id>
-            <name>maven</name>
-            <url>http://repo1.maven.org/maven2</url>
-        </repository>
-        <repository>
-            <id>${repository.id}</id>
-            <name>${repository.name}</name>
-            <url>${repository.url}</url>
-        </repository>
-    </repositories>
-
     <distributionManagement>
         <repository>
             <id>${repository.id}</id>
