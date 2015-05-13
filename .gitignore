@@ -1,2 +1,9 @@
 /build/
 /target/
+
+# OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+# Webstorm IDE config files
+*.idea
