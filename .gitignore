@@ -7,3 +7,4 @@
 
 # Webstorm IDE config files
 *.idea
+*.iml
