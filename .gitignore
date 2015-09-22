@@ -5,6 +5,6 @@
 [Tt]humbs.db
 *.DS_Store
 
-# Webstorm IDE config files
+# IntelliJ
 *.idea
 *.iml
