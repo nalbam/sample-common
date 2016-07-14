@@ -1,9 +1,8 @@
 package com.nalbam.common.util;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.ibm.icu.util.Calendar;
 import com.ibm.icu.util.ChineseCalendar;
+import org.apache.commons.lang3.StringUtils;
 
 public class LunarCalendar {
 
@@ -30,18 +29,15 @@ public class LunarCalendar {
 
         cc.setTimeInMillis(cal.getTimeInMillis());
 
-        // ChinessCalendar.YEAR 는 1~60 까지의 값만 가지고 ,
-        // ChinessCalendar.EXTENDED_YEAR 는 Calendar.YEAR 값과 2637 만큼의 차이를 가집니다.
+        // ChineseCalendar.YEAR 는 1~60 까지의 값만 가지고 ,
+        // ChineseCalendar.EXTENDED_YEAR 는 Calendar.YEAR 값과 2637 만큼의 차이를 가집니다.
         int y = cc.get(ChineseCalendar.EXTENDED_YEAR) - 2637;
         int m = cc.get(ChineseCalendar.MONTH) + 1;
         int d = cc.get(ChineseCalendar.DAY_OF_MONTH);
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(StringUtils.leftPad(y + "", 4, "0")).append("-");
-        sb.append(StringUtils.leftPad(m + "", 2, "0")).append("-");
-        sb.append(StringUtils.leftPad(d + "", 2, "0"));
-
-        return sb.toString();
+        return StringUtils.leftPad(y + "", 4, "0") + "-" +
+                StringUtils.leftPad(m + "", 2, "0") + "-" +
+                StringUtils.leftPad(d + "", 2, "0");
     }
 
     /**
@@ -71,12 +67,9 @@ public class LunarCalendar {
         int m = cal.get(Calendar.MONTH) + 1;
         int d = cal.get(Calendar.DAY_OF_MONTH);
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(StringUtils.leftPad(y + "", 4, "0")).append("-");
-        sb.append(StringUtils.leftPad(m + "", 2, "0")).append("-");
-        sb.append(StringUtils.leftPad(d + "", 2, "0"));
-
-        return sb.toString();
+        return StringUtils.leftPad(y + "", 4, "0") + "-" +
+                StringUtils.leftPad(m + "", 2, "0") + "-" +
+                StringUtils.leftPad(d + "", 2, "0");
     }
 
 }
