@@ -1,10 +1,34 @@
-/build/
-/target/
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
 
 # OS junk files
 [Tt]humbs.db
 *.DS_Store
 
-# IntelliJ
-*.idea
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows shortcuts
+*.lnk
+
+# java
+*.class
+*.jar
+*.war
+*.ear
+
+# maven
+target/
+build/
+
+# eclipse
+.settings/
+.metadata/
+
+# JetBrains
+.idea/
 *.iml
