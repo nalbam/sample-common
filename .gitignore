@@ -2,10 +2,6 @@
 Thumbs.db
 ehthumbs.db
 
-# OS junk files
-[Tt]humbs.db
-*.DS_Store
-
 # Folder config file
 Desktop.ini
 
@@ -14,6 +10,9 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Mac
+.DS_Store
 
 # java
 *.class
@@ -32,3 +31,6 @@ build/
 # JetBrains
 .idea/
 *.iml
+
+# log
+*.log
