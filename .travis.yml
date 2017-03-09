@@ -4,12 +4,14 @@ language: java
 jdk:
   - oraclejdk8
 
+before_install:
+  - echo $TRAVIS_BRANCH
+
 install:
   - mvn -s settings.xml -version
   - curl -s toast.sh/install | bash
 
 before_script:
-  - echo $TRAVIS_BRANCH
   - ~/toaster/toast.sh version $TRAVIS_BRANCH
 
 script:
