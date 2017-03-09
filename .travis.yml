@@ -8,10 +8,21 @@ install:
   - mvn -s settings.xml -version
 
 script:
-  - mvn -s settings.xml clean compile
+  - mvn -s settings.xml clean package
 
 after_success:
   - mvn -s settings.xml cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:report
+
+deploy:
+  provider: s3
+  region: ap-northeast-2
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: $AWS_BUCKET
+  skip_cleanup: true
+  acl: public_read
+  local_dir: target
+  upload-dir: maven2/com/nalbam/nalbam-common
 
 notifications:
   slack: nalbam:lZm5eyurcsoKxZgHSnNZGQYY
