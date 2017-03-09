@@ -5,9 +5,9 @@ jdk:
   - oraclejdk8
 
 before_install:
-  - echo "TRAVIS_BRANCH ${TRAVIS_BRANCH}"
-  - echo "GITHUB_BRANCH ${GITHUB_BRANCH}"
-  - echo "uname `uname -a`"
+  - echo -e "TRAVIS_BRANCH ${TRAVIS_BRANCH}"
+  - echo -e "GITHUB_BRANCH ${GITHUB_BRANCH}"
+  - echo -e "uname `uname -a`"
 
 install:
   - mvn -s settings.xml -version
