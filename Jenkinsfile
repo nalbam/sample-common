@@ -41,7 +41,7 @@ node {
 
     stage('Publish') {
         archive 'target/*.jar, target/*.war'
-        sh '~/toaster/toast.sh version save'
+        sh '~/toaster/toast.sh version save public'
         if (toast == 1) {
             sh '/data/deploy/bin/version-dev.sh'
         }
