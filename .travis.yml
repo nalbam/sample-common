@@ -6,6 +6,7 @@ jdk:
 
 before_install:
   - echo $TRAVIS_BRANCH
+  - echo $GITHUB_BRANCH
   - uname -a
 
 install:
