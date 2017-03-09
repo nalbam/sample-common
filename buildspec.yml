@@ -14,7 +14,7 @@ phases:
       - bash toast.sh version
   build:
     commands:
-      - mvn install
+      - mvn clean package
   post_build:
     commands:
       - bash toast.sh deploy
