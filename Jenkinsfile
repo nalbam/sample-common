@@ -3,9 +3,10 @@
 //echo "JOB_NAME    ${env.JOB_NAME}"
 //echo "BRANCH_NAME ${env.BRANCH_NAME}"
 
-properties([buildDiscarder(logRotator(daysToKeepStr: '60', numToKeepStr: '10')), pipelineTriggers([])])
-
-def toast = 2
+properties([
+    buildDiscarder(logRotator(daysToKeepStr: '60', numToKeepStr: '10')),
+    pipelineTriggers([cron('H/10 * * * *')])
+])
 
 node {
     stage('Checkout') {
@@ -17,11 +18,7 @@ node {
             sh '~/toaster/toast.sh version next'
         }
         try {
-            if (toast == 1) {
-                mvn 'clean deploy -B -e'
-            } else {
-                mvn 'clean package -B -e'
-            }
+            mvn 'clean package -B -e'
             notify('Build Passed', 'good')
         } catch (e) {
             notify('Build Failed', 'danger')
@@ -42,9 +39,6 @@ node {
     stage('Publish') {
         archive 'target/*.jar, target/*.war'
         sh '~/toaster/toast.sh version save public'
-        if (toast == 1) {
-            sh '/data/deploy/bin/version-dev.sh'
-        }
     }
 }
 
