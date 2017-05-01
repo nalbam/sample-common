@@ -6,10 +6,10 @@ jdk:
 
 install:
   - mvn -version
-#  - curl -s toast.sh/install | bash
+  - curl -s toast.sh/install | bash
 
-#before_script:
-#  - ~/toaster/toast.sh version $TRAVIS_BRANCH $TOAST_TOKEN nalbam
+before_script:
+  - ~/toaster/toast.sh version $TRAVIS_BRANCH $TOAST_TOKEN nalbam
 
 script:
   - mvn clean package
