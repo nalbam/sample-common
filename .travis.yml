@@ -5,7 +5,6 @@ jdk:
   - oraclejdk8
 
 install:
-  - mvn -version
   - curl -s toast.sh/install | bash
 
 before_script:
@@ -30,4 +29,4 @@ deploy:
   upload-dir: maven2/com/nalbam/nalbam-common
 
 notifications:
-  slack: $SLACK_KEY
+  slack: nalbam:lZm5eyurcsoKxZgHSnNZGQYY
