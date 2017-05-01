@@ -9,6 +9,7 @@ install:
   - curl -s toast.sh/install | bash
 
 before_script:
+  - echo $TRAVIS_BRANCH
   - ~/toaster/toast.sh version $TRAVIS_BRANCH $TOAST_TOKEN nalbam
 
 script:
