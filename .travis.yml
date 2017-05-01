@@ -10,12 +10,13 @@ install:
 
 before_script:
   - echo $TRAVIS_BRANCH
-  - ~/toaster/toast.sh version $TRAVIS_BRANCH $TOAST_TOKEN nalbam
+  - ~/toaster/toast.sh version next $TRAVIS_BRANCH $TOAST_TOKEN nalbam
 
 script:
   - mvn clean package
 
 after_success:
+  - ~/toaster/toast.sh version save public $TOAST_TOKEN nalbam
   - mvn cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:report
 
 deploy:
