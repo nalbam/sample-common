@@ -6,12 +6,17 @@ jdk:
 
 install:
   - mvn -version
+  - curl -s toast.sh/install | bash
+
+before_script:
+  - ~/toaster/toast.sh version next $TRAVIS_BRANCH $TOAST_TOKEN nalbam
 
 script:
   - mvn clean package
 
 after_success:
   - mvn cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:report
+  - ~/toaster/toast.sh version save none $TOAST_TOKEN nalbam
 
 deploy:
   provider: s3
