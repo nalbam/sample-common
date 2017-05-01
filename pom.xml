@@ -12,28 +12,8 @@
     <url>http://nalbam.com</url>
 
     <properties>
-        <!-- Generic Properties -->
         <java-version>1.8</java-version>
-
-        <!-- Repository -->
-        <repository-id>nalbam</repository-id>
-        <repository-name>nalbam</repository-name>
-        <repository-url>http://repo.nalbam.com/maven2</repository-url>
     </properties>
-
-    <distributionManagement>
-        <repository>
-            <id>${repository-id}</id>
-            <name>${repository-name}</name>
-            <url>dav:${repository-url}</url>
-        </repository>
-        <snapshotRepository>
-            <id>${repository-id}</id>
-            <name>${repository-name}</name>
-            <url>dav:${repository-url}</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
 
     <dependencies>
         <!-- apache commons -->
@@ -60,14 +40,6 @@
     </dependencies>
 
     <build>
-        <extensions>
-            <!-- webdav -->
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-webdav-jackrabbit</artifactId>
-            </extension>
-        </extensions>
-
         <plugins>
             <!-- maven compiler -->
             <plugin>
