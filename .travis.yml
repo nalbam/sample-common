@@ -25,4 +25,4 @@ deploy:
   upload-dir: maven2/com/nalbam/nalbam-common
 
 notifications:
-  slack: nalbam:$SLACK_KEY
+  slack: $SLACK_KEY
