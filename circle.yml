@@ -10,4 +10,4 @@ deployment:
   prod:
     branch: master
     commands:
-      - aws s3 sync target/ s3://repo.nalbam.com/circle-ci/
+      - aws s3 sync target/ s3://repo.nalbam.com/circle-ci/nalbam-common
