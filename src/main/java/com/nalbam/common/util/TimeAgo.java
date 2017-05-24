@@ -1,23 +1,18 @@
 package com.nalbam.common.util;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class TimeAgo {
 
-    public static String timeAgoString(Date date) {
-        Calendar now = Calendar.getInstance();
+    public static String ago(Calendar c) {
+        Calendar n = Calendar.getInstance();
 
-        Calendar c = Calendar.getInstance();
-        if (date != null) {
-            c.setTime(date);
-        }
+        long nt = n.getTimeInMillis() / 1000;
+        long ct = c.getTimeInMillis() / 1000;
 
-        long curTime = now.getTimeInMillis() / 1000;
-        long targetTime = c.getTimeInMillis() / 1000;
-        long diff = curTime - targetTime;
+        long diff = nt - ct;
 
-        if (targetTime > curTime) {
+        if (ct > nt) {
             return "방금";
         } else {
             if (diff < 3) {

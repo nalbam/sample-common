@@ -3,7 +3,6 @@ package com.nalbam.common.util;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 public class LunarCalendarTest {
 
@@ -15,18 +14,18 @@ public class LunarCalendarTest {
         String var1 = LunarCalendar.toLunar(str1);
         String var2 = LunarCalendar.toSolar(str2);
 
+        System.out.println("양력 " + str1 + " 은 음력 " + var1 + " 입니다.");
+        System.out.println("음력 " + str2 + " 은 양력 " + var2 + " 입니다.");
+
         assertEquals(str1, var2);
         assertEquals(str2, var1);
     }
 
     @Test
     public void testNull() {
-        LunarCalendar lc = new LunarCalendar();
-
         String var1 = LunarCalendar.toLunar(null);
         String var2 = LunarCalendar.toSolar(null);
 
-        assertNotNull(lc);
         assertEquals(var1, "");
         assertEquals(var2, "");
     }
