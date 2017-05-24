@@ -15,6 +15,9 @@ public class LunarCalendarTest {
         String var1 = LunarCalendar.toLunar(str1);
         String var2 = LunarCalendar.toSolar(str2);
 
+        System.out.println("양력 " + str1 + " 은 음력 " + var1 + " 입니다.");
+        System.out.println("음력 " + str2 + " 은 양력 " + var2 + " 입니다.");
+
         assertEquals(str1, var2);
         assertEquals(str2, var1);
     }
