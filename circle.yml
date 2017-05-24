@@ -10,4 +10,4 @@ deployment:
   prod:
     branch: master
     commands:
-      - aws s3 cp target/*.jar s3://repo.nalbam.com/circle-ci/nalbam-common --region ap-northeast-2
+      - aws s3 cp target/*.jar s3://repo.nalbam.com/circle-ci/nalbam-common/ --region ap-northeast-2
