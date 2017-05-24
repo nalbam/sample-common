@@ -2,12 +2,23 @@ machine:
   java:
     version: oraclejdk8
 
-test:
+dependencies:
   post:
+    - curl -s toast.sh/install | bash
+    - ~/toaster/toast.sh config circle local nalbam $TOAST_TOKEN
+    - ~/toaster/toast.sh version next $CIRCLE_BRANCH
+    - ~/toaster/toast.sh init slave
+
+compile:
+  override:
     - mvn clean package
 
 deployment:
-  prod:
+  development:
+    branch: /^(?!master$).*$/
+    commands:
+      - ~/toaster/toast.sh version save war
+  production:
     branch: master
     commands:
-      - aws s3 cp target/*.jar s3://repo.nalbam.com/circle-ci/nalbam-common/ --region ap-northeast-2
+      - ~/toaster/toast.sh version save war
