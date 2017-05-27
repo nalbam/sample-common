@@ -4,15 +4,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class LunarCalendarTest {
+public class LunarUtilTest {
 
     @Test
     public void testConvert() {
         String str1 = "1980-02-14";
         String str2 = "1979-12-28";
 
-        String var1 = LunarCalendar.toLunar(str1);
-        String var2 = LunarCalendar.toSolar(str2);
+        String var1 = LunarUtil.toLunar(str1);
+        String var2 = LunarUtil.toSolar(str2);
 
         System.out.println("양력 " + str1 + " 은 음력 " + var1 + " 입니다.");
         System.out.println("음력 " + str2 + " 은 양력 " + var2 + " 입니다.");
@@ -23,8 +23,8 @@ public class LunarCalendarTest {
 
     @Test
     public void testNull() {
-        String var1 = LunarCalendar.toLunar(null);
-        String var2 = LunarCalendar.toSolar(null);
+        String var1 = LunarUtil.toLunar(null);
+        String var2 = LunarUtil.toSolar(null);
 
         assertEquals(var1, "");
         assertEquals(var2, "");
@@ -35,8 +35,8 @@ public class LunarCalendarTest {
         String str1 = "111";
         String str2 = "222";
 
-        String var1 = LunarCalendar.toLunar(str1);
-        String var2 = LunarCalendar.toSolar(str2);
+        String var1 = LunarUtil.toLunar(str1);
+        String var2 = LunarUtil.toSolar(str2);
 
         assertEquals(var1, "");
         assertEquals(var2, "");

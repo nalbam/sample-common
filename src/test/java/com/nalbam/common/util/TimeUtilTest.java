@@ -7,14 +7,14 @@ import java.util.Calendar;
 
 import static org.junit.Assert.assertNotNull;
 
-public class TimeAgoTest {
+public class TimeUtilTest {
 
     @Test
-    public void testAgo() {
+    public void getAgo() {
         Calendar c = Calendar.getInstance();
         c.set(2007, Calendar.APRIL, 28);
 
-        String ago = TimeAgo.ago(c);
+        String ago = TimeUtil.getAgo(c);
 
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 

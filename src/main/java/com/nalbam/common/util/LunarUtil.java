@@ -4,7 +4,7 @@ import com.ibm.icu.util.Calendar;
 import com.ibm.icu.util.ChineseCalendar;
 import org.apache.commons.lang3.StringUtils;
 
-public class LunarCalendar {
+public class LunarUtil {
 
     /**
      * 양력(yyyy-MM-dd) -> 음력(yyyy-MM-dd)
