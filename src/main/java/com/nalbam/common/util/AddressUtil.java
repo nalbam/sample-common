@@ -4,7 +4,7 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
-public class InetUtil {
+public class AddressUtil {
 
     public static synchronized String getAddress() {
         try {
