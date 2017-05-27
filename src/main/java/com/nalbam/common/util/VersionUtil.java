@@ -11,6 +11,9 @@ public class VersionUtil {
                 version = p.getSpecificationVersion();
             }
         }
+        if (version == null) {
+            version = "unknown";
+        }
         return version;
     }
 
