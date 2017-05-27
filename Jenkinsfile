@@ -37,8 +37,8 @@ node {
     }
 
     stage('Publish') {
-        archive 'target/*.jar, target/*.war'
-        sh '~/toaster/toast.sh version save jar'
+        archive 'target/*.jar'
+        sh '~/toaster/toast.sh version save jar public'
     }
 }
 

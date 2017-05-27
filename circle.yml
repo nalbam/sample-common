@@ -17,8 +17,8 @@ deployment:
   development:
     branch: /^(?!master$).*$/
     commands:
-      - ~/toaster/toast.sh version save jar
+      - ~/toaster/toast.sh version save jar public
   production:
     branch: master
     commands:
-      - ~/toaster/toast.sh version save jar
+      - ~/toaster/toast.sh version save jar public

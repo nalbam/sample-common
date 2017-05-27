@@ -2,9 +2,9 @@ package com.nalbam.common.util;
 
 import java.util.Calendar;
 
-public class TimeAgo {
+public class TimeUtil {
 
-    public static String ago(Calendar c) {
+    public static String getAgo(Calendar c) {
         Calendar n = Calendar.getInstance();
 
         long nt = n.getTimeInMillis() / 1000;
