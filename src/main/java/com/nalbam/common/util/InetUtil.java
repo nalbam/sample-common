@@ -4,9 +4,6 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
-/**
- * Created by nalbam on 2017. 5. 27..
- */
 public class InetUtil {
 
     public static synchronized String getAddress() {

@@ -1,8 +1,5 @@
 package com.nalbam.common.util;
 
-/**
- * Created by nalbam on 2017. 5. 27..
- */
 public class VersionUtil {
 
     public static synchronized String getVersion(Class<?> c) {
