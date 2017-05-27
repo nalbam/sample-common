@@ -4,11 +4,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
-public class InetUtilTest {
+public class AddressUtilTest {
 
     @Test
     public void getAddress() {
-        String ip = InetUtil.getAddress();
+        String ip = AddressUtil.getAddress();
 
         System.out.println("IP 는 " + ip + " 입니다.");
 
