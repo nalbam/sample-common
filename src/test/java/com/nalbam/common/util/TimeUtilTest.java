@@ -16,7 +16,7 @@ public class TimeUtilTest {
 
         String ago = TimeUtil.getAgo(c);
 
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat f = new SimpleDateFormat("yyyy년 MM월 dd일");
 
         System.out.println(f.format(c.getTime()) + " 은 " + ago + " 입니다.");
 
