@@ -4,12 +4,12 @@ import com.ibm.icu.util.Calendar;
 import com.ibm.icu.util.ChineseCalendar;
 import org.apache.commons.lang3.StringUtils;
 
-class LunarUtil {
+public class LunarUtil {
 
     /**
      * 양력(yyyy-MM-dd) -> 음력(yyyy-MM-dd)
      */
-    static String toLunar(String ymd) {
+    public static String toLunar(String ymd) {
         if (StringUtils.isEmpty(ymd)) {
             return "";
         }
@@ -43,7 +43,7 @@ class LunarUtil {
     /**
      * 음력(yyyy-MM-dd) -> 양력(yyyy-MM-dd)
      */
-    static String toSolar(String ymd) {
+      static String toSolar(String ymd) {
         if (StringUtils.isEmpty(ymd)) {
             return "";
         }
