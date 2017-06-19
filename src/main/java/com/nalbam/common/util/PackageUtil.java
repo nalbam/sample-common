@@ -3,9 +3,9 @@ package com.nalbam.common.util;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-class PackageUtil {
+public class PackageUtil {
 
-    static synchronized Map<String, String> getData(Class<?> c) {
+    public static synchronized Map<String, String> getData(Class<?> c) {
         Map<String, String> data = new ConcurrentHashMap<>();
         Package p = c.getPackage();
         if (p != null) {

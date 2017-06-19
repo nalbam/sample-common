@@ -4,9 +4,9 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
-class AddressUtil {
+public class AddressUtil {
 
-    static synchronized String getAddress() {
+    public static synchronized String getAddress() {
         try {
             InetAddress ip;
             for (Enumeration<NetworkInterface> e = NetworkInterface.getNetworkInterfaces(); e.hasMoreElements(); ) {
