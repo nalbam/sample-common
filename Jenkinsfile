@@ -14,9 +14,7 @@ node {
     }
 
     stage('Build') {
-        if (env.BRANCH_NAME == 'master') {
-            sh '~/toaster/toast.sh version next'
-        }
+        sh "~/toaster/toast.sh version next ${env.BRANCH_NAME}"
         try {
             mvn 'clean package -B -e'
             notify('Build Passed', 'good')
@@ -37,8 +35,8 @@ node {
     }
 
     stage('Publish') {
-        archive 'target/*.jar'
         sh '~/toaster/toast.sh version save jar public'
+        archive 'target/*.jar, target/*.war, target/*.zip'
     }
 }
 
