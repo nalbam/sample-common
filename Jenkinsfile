@@ -4,8 +4,8 @@
 //echo "BRANCH_NAME ${env.BRANCH_NAME}"
 
 properties([
-    buildDiscarder(logRotator(daysToKeepStr: '60', numToKeepStr: '10')),
-    pipelineTriggers([[$class: "SCMTrigger", scmpoll_spec: "H/5 * * * *"]])
+        buildDiscarder(logRotator(daysToKeepStr: '60', numToKeepStr: '10')),
+        pipelineTriggers([[$class: "SCMTrigger", scmpoll_spec: "H/5 * * * *"]])
 ])
 
 node {
@@ -14,7 +14,7 @@ node {
     }
 
     stage('Build') {
-        sh "~/toaster/toast.sh version next ${env.BRANCH_NAME}"
+        sh "~/toaster/toast.sh build version ${env.BRANCH_NAME}"
         try {
             mvn 'clean package -B -e'
             notify('Build Passed', 'good')
@@ -35,7 +35,7 @@ node {
     }
 
     stage('Publish') {
-        sh '~/toaster/toast.sh version save jar public'
+        sh '~/toaster/toast.sh build save jar public'
         archive 'target/*.jar, target/*.war, target/*.zip'
     }
 }

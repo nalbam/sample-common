@@ -9,14 +9,14 @@ install:
 
 before_script:
   - ~/toaster/toast.sh config travis local nalbam $TOAST_TOKEN
-  - ~/toaster/toast.sh version next $TRAVIS_BRANCH
+  - ~/toaster/toast.sh build version $TRAVIS_BRANCH
 
 script:
   - mvn clean package
 
 after_success:
   - mvn cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:report
-  - ~/toaster/toast.sh version save jar none
+  - ~/toaster/toast.sh build save jar none
 
 deploy:
   provider: s3

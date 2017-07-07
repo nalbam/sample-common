@@ -6,7 +6,7 @@ dependencies:
   post:
     - curl -s toast.sh/install | bash
     - ~/toaster/toast.sh config circle local nalbam $TOAST_TOKEN
-    - ~/toaster/toast.sh version next $CIRCLE_BRANCH
+    - ~/toaster/toast.sh build version $CIRCLE_BRANCH
     - ~/toaster/toast.sh init slave
 
 compile:
@@ -17,8 +17,8 @@ deployment:
   development:
     branch: /^(?!master$).*$/
     commands:
-      - ~/toaster/toast.sh version save jar public
+      - ~/toaster/toast.sh build save jar public
   production:
     branch: master
     commands:
-      - ~/toaster/toast.sh version save jar public
+      - ~/toaster/toast.sh build save jar public
