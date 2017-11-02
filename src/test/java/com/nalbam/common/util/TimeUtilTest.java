@@ -14,7 +14,7 @@ public class TimeUtilTest {
         final Calendar c = Calendar.getInstance();
         c.set(2007, Calendar.APRIL, 28);
 
-        final String ago = TimeUtil.getAgo(c);
+        final String ago = TimeUtil.ago(c);
 
         final SimpleDateFormat f = new SimpleDateFormat("yyyy년 MM월 dd일");
 
