@@ -1,24 +1,33 @@
 machine:
+  timezone: Asia/Seoul
   java:
     version: oraclejdk8
+  services:
+    - redis
 
 dependencies:
+  pre:
+    - curl -s toast.sh/install-v3 | bash
   post:
-    - curl -s toast.sh/install | bash
-    - ~/toaster/toast.sh config circle local nalbam $TOAST_TOKEN
+    - ~/toaster/toast.sh c REGION ap-northeast-2
+    - ~/toaster/toast.sh c BUCKET repo.nalbam.com
 
 compile:
   pre:
-    - ~/toaster/toast.sh build version $CIRCLE_BRANCH
+    - ~/toaster/toast.sh v $CIRCLE_BRANCH
   override:
-    - mvn clean package
+    - mvn clean package -DskipTests
+
+test:
+  override:
+    - ls -al target
 
 deployment:
   development:
     branch: /^(?!master$).*$/
     commands:
-      - ~/toaster/toast.sh build save jar public
+      - ~/toaster/toast.sh p bk
   production:
     branch: master
     commands:
-      - ~/toaster/toast.sh build save jar public
+      - ~/toaster/toast.sh p bk

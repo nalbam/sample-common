@@ -10,7 +10,7 @@ public class PackageUtilTest {
 
     @Test
     public void getPackage() {
-        Map<String, String> data = PackageUtil.getData(getClass());
+        final Map<String, String> data = PackageUtil.getData(getClass());
 
         System.out.println("artifactId = " + data.get("artifactId"));
         System.out.println("version = " + data.get("version"));

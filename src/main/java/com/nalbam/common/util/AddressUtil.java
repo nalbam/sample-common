@@ -6,11 +6,11 @@ import java.util.Enumeration;
 
 public class AddressUtil {
 
-    public static synchronized String getAddress() {
+    public static String getAddress() {
         try {
             InetAddress ip;
-            for (Enumeration<NetworkInterface> e = NetworkInterface.getNetworkInterfaces(); e.hasMoreElements(); ) {
-                for (Enumeration<InetAddress> a = e.nextElement().getInetAddresses(); a.hasMoreElements(); ) {
+            for (final Enumeration<NetworkInterface> e = NetworkInterface.getNetworkInterfaces(); e.hasMoreElements(); ) {
+                for (final Enumeration<InetAddress> a = e.nextElement().getInetAddresses(); a.hasMoreElements(); ) {
                     ip = a.nextElement();
                     if (!ip.isLoopbackAddress() && !ip.isLinkLocalAddress() && ip.isSiteLocalAddress()) {
                         return ip.getHostAddress();
@@ -19,7 +19,7 @@ public class AddressUtil {
             }
             ip = InetAddress.getLocalHost();
             return ip.getHostAddress();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             e.printStackTrace();
         }
         return "";

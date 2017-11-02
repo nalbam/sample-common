@@ -20,8 +20,8 @@ public class LunarUtil {
             return "";
         }
 
-        Calendar cal = Calendar.getInstance();
-        ChineseCalendar cc = new ChineseCalendar();
+        final Calendar cal = Calendar.getInstance();
+        final ChineseCalendar cc = new ChineseCalendar();
 
         cal.set(Calendar.YEAR, Integer.parseInt(ymd.substring(0, 4)));
         cal.set(Calendar.MONTH, Integer.parseInt(ymd.substring(4, 6)) - 1);
@@ -31,9 +31,9 @@ public class LunarUtil {
 
         // ChineseCalendar.YEAR 는 1~60 까지의 값만 가지고 ,
         // ChineseCalendar.EXTENDED_YEAR 는 Calendar.YEAR 값과 2637 만큼의 차이를 가집니다.
-        int y = cc.get(ChineseCalendar.EXTENDED_YEAR) - 2637;
-        int m = cc.get(ChineseCalendar.MONTH) + 1;
-        int d = cc.get(ChineseCalendar.DAY_OF_MONTH);
+        final int y = cc.get(ChineseCalendar.EXTENDED_YEAR) - 2637;
+        final int m = cc.get(ChineseCalendar.MONTH) + 1;
+        final int d = cc.get(ChineseCalendar.DAY_OF_MONTH);
 
         return StringUtils.leftPad(y + "", 4, "0") + "-" +
                 StringUtils.leftPad(m + "", 2, "0") + "-" +
@@ -43,7 +43,7 @@ public class LunarUtil {
     /**
      * 음력(yyyy-MM-dd) -> 양력(yyyy-MM-dd)
      */
-      static String toSolar(String ymd) {
+    static String toSolar(String ymd) {
         if (StringUtils.isEmpty(ymd)) {
             return "";
         }
@@ -54,8 +54,8 @@ public class LunarUtil {
             return "";
         }
 
-        Calendar cal = Calendar.getInstance();
-        ChineseCalendar cc = new ChineseCalendar();
+        final Calendar cal = Calendar.getInstance();
+        final ChineseCalendar cc = new ChineseCalendar();
 
         cc.set(ChineseCalendar.EXTENDED_YEAR, Integer.parseInt(ymd.substring(0, 4)) + 2637);
         cc.set(ChineseCalendar.MONTH, Integer.parseInt(ymd.substring(4, 6)) - 1);
@@ -63,9 +63,9 @@ public class LunarUtil {
 
         cal.setTimeInMillis(cc.getTimeInMillis());
 
-        int y = cal.get(Calendar.YEAR);
-        int m = cal.get(Calendar.MONTH) + 1;
-        int d = cal.get(Calendar.DAY_OF_MONTH);
+        final int y = cal.get(Calendar.YEAR);
+        final int m = cal.get(Calendar.MONTH) + 1;
+        final int d = cal.get(Calendar.DAY_OF_MONTH);
 
         return StringUtils.leftPad(y + "", 4, "0") + "-" +
                 StringUtils.leftPad(m + "", 2, "0") + "-" +

@@ -5,9 +5,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class PackageUtil {
 
-    public static synchronized Map<String, String> getData(Class<?> c) {
-        Map<String, String> data = new ConcurrentHashMap<>();
-        Package p = c.getPackage();
+    public static Map<String, String> getData(final Class<?> c) {
+        final Map<String, String> data = new ConcurrentHashMap<>();
+        final Package p = c.getPackage();
         if (p != null) {
             if (p.getImplementationTitle() != null) {
                 data.put("artifactId", p.getImplementationTitle());
