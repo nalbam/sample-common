@@ -2,8 +2,6 @@ machine:
   timezone: Asia/Seoul
   java:
     version: oraclejdk8
-  services:
-    - redis
 
 dependencies:
   pre:
