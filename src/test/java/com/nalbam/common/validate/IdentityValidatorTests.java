@@ -13,10 +13,10 @@ public class IdentityValidatorTests {
     @Test
     public void idTest() throws Exception {
         final List<String> list = Arrays.asList(
-                "yanolja",
-                "yanolja-com",
-                "yanolja_427",
-                "427_yanolja"
+                "nalbam",
+                "nalbam-com",
+                "nalbam_427",
+                "427_nalbam"
         );
 
         final IdentityValidator validator = new IdentityValidator();
@@ -33,8 +33,8 @@ public class IdentityValidatorTests {
     @Test
     public void idTestFalse() throws Exception {
         final List<String> list = Arrays.asList(
-                "#yanolja.com",
-                "yanolja.com-"
+                "#nalbam.com",
+                "nalbam.com-"
         );
 
         final IdentityValidator validator = new IdentityValidator();

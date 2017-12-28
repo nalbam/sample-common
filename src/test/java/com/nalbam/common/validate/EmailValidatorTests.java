@@ -13,8 +13,8 @@ public class EmailValidatorTests {
     @Test
     public void emailTest() throws Exception {
         final List<String> list = Arrays.asList(
-                "ya@yanolja.com",
-                "ya-4.2_7@yanolja.com"
+                "me@nalbam.com",
+                "me-4.2_7@nalbam.com"
         );
 
         final EmailValidator validator = new EmailValidator();
@@ -31,8 +31,8 @@ public class EmailValidatorTests {
     @Test
     public void emailTestFalse() throws Exception {
         final List<String> list = Arrays.asList(
-                "ya@yanolja@com",
-                "ya-4.27_yanolja.com"
+                "me@nalbam@com",
+                "me-4.27_nalbam.com"
         );
 
         final EmailValidator validator = new EmailValidator();
