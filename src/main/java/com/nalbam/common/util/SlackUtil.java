@@ -19,6 +19,7 @@ public class SlackUtil {
     public void send(final SlackMessage message) {
         try {
             new Slack(this.webhook).push(message);
+            log.debug("SlackUtil send : ok");
         } catch (final Exception e) {
             log.info("SlackUtil error : {}", e.getMessage());
         }
@@ -28,6 +29,7 @@ public class SlackUtil {
     public void send(final SlackAttachment attachment) {
         try {
             new Slack(this.webhook).push(attachment);
+            log.debug("SlackUtil send : ok");
         } catch (final Exception e) {
             log.info("SlackUtil error : {}", e.getMessage());
         }
