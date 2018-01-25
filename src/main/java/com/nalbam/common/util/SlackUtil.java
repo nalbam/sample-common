@@ -30,7 +30,7 @@ public class SlackUtil {
             new Slack(this.webhook).push(message);
             log.debug("SlackUtil send : ok");
         } catch (final Exception e) {
-            log.info("SlackUtil error : {}", e.getMessage());
+            log.error("SlackUtil error : {}", e.getMessage());
         }
     }
 
@@ -43,7 +43,7 @@ public class SlackUtil {
             new Slack(this.webhook).push(attachment);
             log.debug("SlackUtil send : ok");
         } catch (final Exception e) {
-            log.info("SlackUtil error : {}", e.getMessage());
+            log.error("SlackUtil error : {}", e.getMessage());
         }
     }
 
@@ -51,13 +51,9 @@ public class SlackUtil {
         try {
             final Properties prop = new Properties();
             prop.load(this.getClass().getClassLoader().getResourceAsStream("application.properties"));
-            final String property = prop.getProperty("SLACK_WEBHOOK");
-            if (!StringUtils.isEmpty(property)) {
-                this.webhook = property;
-            }
+            this.webhook = prop.getProperty("SLACK_WEBHOOK");
         } catch (final Exception e) {
-            // it is fine not to have that resource file.
-            // ignoring any error here
+            log.error("SlackUtil error : {}", e.getMessage());
         }
     }
 
