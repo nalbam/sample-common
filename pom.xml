@@ -5,7 +5,7 @@
 
     <groupId>com.nalbam</groupId>
     <artifactId>nalbam-common</artifactId>
-    <version>0.2.2</version>
+    <version>0.2.3</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -43,9 +43,9 @@
 
         <!-- slack -->
         <dependency>
-            <groupId>in.ashwanthkumar</groupId>
-            <artifactId>slack-java-webhook</artifactId>
-            <version>0.0.9</version>
+            <groupId>com.webcerebrium</groupId>
+            <artifactId>slack-notification</artifactId>
+            <version>0.1.1</version>
         </dependency>
 
         <!-- netty -->
