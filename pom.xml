@@ -43,9 +43,9 @@
 
         <!-- slack -->
         <dependency>
-            <groupId>com.webcerebrium</groupId>
-            <artifactId>slack-notification</artifactId>
-            <version>0.1.1</version>
+            <groupId>in.ashwanthkumar</groupId>
+            <artifactId>slack-java-webhook</artifactId>
+            <version>0.0.9</version>
         </dependency>
 
         <!-- netty -->
