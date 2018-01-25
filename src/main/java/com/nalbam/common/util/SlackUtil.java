@@ -4,45 +4,32 @@ import in.ashwanthkumar.slack.webhook.Slack;
 import in.ashwanthkumar.slack.webhook.SlackAttachment;
 import in.ashwanthkumar.slack.webhook.SlackMessage;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 
 @Slf4j
 public class SlackUtil {
 
-    @Value("${slack.webhook}")
-    private String webhook;
+    private final String webhook;
 
-    @Value("${slack.channel}")
-    private String channel;
-
-    @Async
-    public void send(final SlackMessage message) {
-        this.send(this.channel, message);
+    public SlackUtil(final String webhook) {
+        this.webhook = webhook;
     }
 
     @Async
-    public void send(final String channel, final SlackMessage message) {
+    public void send(final SlackMessage message) {
         try {
-            new Slack(this.webhook).sendToChannel(channel).push(message);
-            log.info("slack send : {}", message.toString());
+            new Slack(this.webhook).push(message);
         } catch (final Exception e) {
-            log.info("slack send error : {}", e.getMessage());
+            log.info("SlackUtil error : {}", e.getMessage());
         }
     }
 
     @Async
     public void send(final SlackAttachment attachment) {
-        this.send(this.channel, attachment);
-    }
-
-    @Async
-    public void send(final String channel, final SlackAttachment attachment) {
         try {
-            new Slack(this.webhook).sendToChannel(channel).push(attachment);
-            log.info("slack send : {}", attachment.getText());
+            new Slack(this.webhook).push(attachment);
         } catch (final Exception e) {
-            log.info("slack send error : {}", e.getMessage());
+            log.info("SlackUtil error : {}", e.getMessage());
         }
     }
 
