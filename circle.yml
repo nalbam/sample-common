@@ -6,6 +6,7 @@ machine:
 dependencies:
   pre:
     - curl -s toast.sh/install-v3 | bash
+    - rm -rf ~/.m2/repository
   override:
     - mvn dependency:copy-dependencies
   post:
