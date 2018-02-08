@@ -22,8 +22,6 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-  cache_directories:
-    - ~/.m2
 
 deployment:
   development:
@@ -34,3 +32,10 @@ deployment:
     branch: master
     commands:
       - ~/toaster/toast.sh publish bucket public
+
+general:
+  artifacts:
+    - target/*.jar
+    - target/*.war
+    - target/*.zip
+    - target/*.pom
