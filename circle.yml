@@ -8,7 +8,7 @@ dependencies:
     - curl -s toast.sh/install-v3 | bash
     - rm -rf ~/.m2/repository
   override:
-    - mvn dependency:copy-dependencies
+    - mvn dependency:go-offline
   post:
     - ~/toaster/toast.sh config REGION ap-northeast-2
     - ~/toaster/toast.sh config BUCKET repo.nalbam.com
@@ -17,7 +17,7 @@ compile:
   pre:
     - ~/toaster/toast.sh version $CIRCLE_BRANCH $CIRCLE_BUILD_NUM
   override:
-    - mvn clean package -DskipTests
+    - mvn package -DskipTests
   post:
     - ls -al target
 
