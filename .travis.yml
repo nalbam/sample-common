@@ -12,7 +12,7 @@ before_script:
   - ~/toaster/toast.sh c BUCKET $AWS_BUCKET
 
 script:
-  - mvn clean package
+  - mvn package
 
 after_success:
   - mvn cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:report
