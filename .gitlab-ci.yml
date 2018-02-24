@@ -11,6 +11,7 @@ build:
   stage: build
   image: maven:latest
   script:
+    - ~/toaster/toast.sh version
     - ~/toaster/toast.sh build maven
   artifacts:
     paths:
@@ -25,3 +26,10 @@ deploy:
 
 after_script:
   - ls -alh target
+  - echo ${CI_COMMIT_REF_NAME}
+  - echo ${CI_COMMIT_REF_SLUG}
+  - echo ${CI_COMMIT_SHA}
+  - echo ${CI_JOB_ID}
+  - echo ${CI_JOB_NAME}
+  - echo ${CI_RUNNER_ID}
+  - echo ${CI_PROJECT_ID}
