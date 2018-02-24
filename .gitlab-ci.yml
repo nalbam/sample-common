@@ -25,3 +25,7 @@ deploy:
 
 after_script:
   - ls -alh target
+
+cache:
+  paths:
+    - ./.m2/repository
