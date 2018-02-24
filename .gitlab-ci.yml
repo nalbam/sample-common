@@ -1,0 +1,27 @@
+# gitlab-ci
+
+stages:
+  - build
+  - deploy
+
+before_script:
+  - curl -s toast.sh/install-v3 | bash
+
+build:
+  stage: build
+  image: maven:latest
+  script:
+    - ~/toaster/toast.sh build maven
+  artifacts:
+    paths:
+      - target/
+
+deploy:
+  stage: deploy
+  image: python:latest
+  script:
+    - ~/toaster/toast.sh install aws
+    - ~/toaster/toast.sh releases bucket
+
+after_script:
+  - ls -alh target
