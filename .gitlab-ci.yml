@@ -35,7 +35,7 @@ releases:
   image: python:latest
   script:
     - pip install awscli
-    - ~/toaster/toast.sh releases bucket
+    - ~/toaster/toast.sh releases bucket public
   artifacts:
     paths:
       - target/
