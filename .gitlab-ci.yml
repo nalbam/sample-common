@@ -32,9 +32,8 @@ build:
 
 release:
   stage: release
-  image: python:latest
+  image: nalbam/builder:awscli
   script:
-    - pip install awscli
     - ~/toaster/toast.sh release bucket public
   artifacts:
     paths:
