@@ -19,7 +19,7 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
       - store_artifacts:
-          path: target
+          path: target/*.jar
       - persist_to_workspace:
           root: ~/repo
           paths:
@@ -38,6 +38,6 @@ workflows:
   maven:
     jobs:
       - build
-#      - deploy:
-#          requires:
-#            - build
+      - deploy:
+          requires:
+            - build
