@@ -6,7 +6,9 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk
+
     working_directory: ~/repo
+
     steps:
       - checkout
 
@@ -23,10 +25,10 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       - store_test_results:
-          path: target/surefire-reports
+          path: ~/repo/target/surefire-reports
 
       - store_artifacts:
-          path: target/
+          path: ~/repo/target/*.jar
 
       - persist_to_workspace:
           root: ~/repo
