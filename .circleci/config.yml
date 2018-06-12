@@ -28,7 +28,7 @@ jobs:
           path: ~/repo/target/surefire-reports
 
       - store_artifacts:
-          path: ~/repo/target/*.jar
+          path: ~/repo/target
 
       - persist_to_workspace:
           root: ~/repo
