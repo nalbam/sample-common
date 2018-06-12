@@ -6,6 +6,7 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk
+    working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
@@ -17,12 +18,12 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-      - persist_to_workspace:
-          root: /tmp/target
-          paths:
-            - target/*.jar
       - store_artifacts:
           path: target
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - target/*.jar
   deploy:
     docker:
       - image: nalbam/builder:python
