@@ -19,10 +19,10 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
       - store_artifacts:
           path: target
-      - persist_to_workspace:
-          root: /tmp/target
-          paths:
-            - *
+#      - persist_to_workspace:
+#          root: /tmp/target
+#          paths:
+#            - *
   deploy:
     docker:
       - image: nalbam/builder:python
