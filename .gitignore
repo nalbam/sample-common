@@ -15,14 +15,15 @@ $RECYCLE.BIN/
 .DS_Store
 
 # Java
+.project
+.classpath
+.factorypath
+
+# Java
 *.class
 *.jar
 *.war
 *.ear
-
-# PHP
-composer.phar
-composer.lock
 
 # Maven
 target/
@@ -35,7 +36,6 @@ build/
 # Eclipse
 .settings/
 .metadata/
-.project
 
 # Temp
 *.pid
