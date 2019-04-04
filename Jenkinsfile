@@ -1,55 +1,91 @@
-#!groovy
+def SERVICE_GROUP = "sample"
+def SERVICE_NAME = "common"
+def IMAGE_NAME = "${SERVICE_GROUP}-${SERVICE_NAME}"
+def REPOSITORY_URL = "git@github.com:nalbam/sample-common.git"
+def REPOSITORY_SECRET = ""
+def SLACK_TOKEN_DEV = ""
+def SLACK_TOKEN_DQA = ""
 
-//echo "JOB_NAME    ${env.JOB_NAME}"
-//echo "BRANCH_NAME ${env.BRANCH_NAME}"
+@Library("github.com/opsnow-tools/valve-butler")
+def butler = new com.opsnow.valve.v7.Butler()
+def label = "worker-${UUID.randomUUID().toString()}"
 
 properties([
-        buildDiscarder(logRotator(daysToKeepStr: '60', numToKeepStr: '10')),
-        pipelineTriggers([[$class: "SCMTrigger", scmpoll_spec: "H/5 * * * *"]])
+  buildDiscarder(logRotator(daysToKeepStr: "60", numToKeepStr: "30"))
 ])
-
-node {
-    stage('Checkout') {
-        checkout scm
+podTemplate(label: label, containers: [
+  containerTemplate(name: "builder", image: "quay.io/opsnow-tools/valve-builder", command: "cat", ttyEnabled: true, alwaysPullImage: true),
+  containerTemplate(name: "maven", image: "maven:3.5.4-jdk-8-alpine", command: "cat", ttyEnabled: true)
+], volumes: [
+  // hostPathVolume(mountPath: "/var/run/docker.sock", hostPath: "/var/run/docker.sock"),
+  // hostPathVolume(mountPath: "/home/jenkins/.draft", hostPath: "/home/jenkins/.draft"),
+  // hostPathVolume(mountPath: "/home/jenkins/.helm", hostPath: "/home/jenkins/.helm")
+]) {
+  node(label) {
+    stage("Prepare") {
+      container("builder") {
+        butler.prepare(IMAGE_NAME)
+      }
     }
-
-    stage('Build') {
-        sh "~/toaster/toast.sh build version ${env.BRANCH_NAME}"
+    stage("Checkout") {
+      container("builder") {
         try {
-            mvn 'clean package -B -e'
-            notify('Build Passed', 'good')
+          if (REPOSITORY_SECRET) {
+            git(url: REPOSITORY_URL, branch: BRANCH_NAME, credentialsId: REPOSITORY_SECRET)
+          } else {
+            git(url: REPOSITORY_URL, branch: BRANCH_NAME)
+          }
         } catch (e) {
-            notify('Build Failed', 'danger')
-            throw e
+          butler.failure(SLACK_TOKEN_DEV, "Checkout")
+          throw e
         }
+
+        butler.scan("java")
+      }
     }
-
-    stage('Code Analysis') {
-        mvn 'checkstyle:checkstyle pmd:pmd pmd:cpd findbugs:findbugs -B -e'
-        step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/*.xml'])
-        step([$class: 'CheckStylePublisher', pattern: 'target/checkstyle-result.xml'])
-        step([$class: 'FindBugsPublisher', pattern: 'target/findbugsXml.xml'])
-        step([$class: 'PmdPublisher', pattern: 'target/pmd.xml'])
-        step([$class: 'DryPublisher', pattern: 'target/cpd.xml'])
-        step([$class: 'TasksPublisher', high: 'FIXME', low: '', normal: 'TODO', pattern: 'src/**/*.java, src/**/*.php'])
+    stage("Build") {
+      container("maven") {
+        try {
+          butler.mvn_build()
+          butler.success(SLACK_TOKEN_DEV, "Build")
+        } catch (e) {
+          butler.failure(SLACK_TOKEN_DEV, "Build")
+          throw e
+        }
+      }
     }
-
-    stage('Publish') {
-        sh '~/toaster/toast.sh build save jar public'
-        archive 'target/*.jar, target/*.war, target/*.zip'
+    stage("Tests") {
+      container("maven") {
+        try {
+          butler.mvn_test()
+        } catch (e) {
+          butler.failure(SLACK_TOKEN_DEV, "Tests")
+          throw e
+        }
+      }
     }
-}
-
-// Run Maven from tool "mvn"
-void mvn(args) {
-    // Get the maven tool.
-    // ** NOTE: This 'M3' maven tool must be configured
-    // **       in the global configuration.
-    def mvnHome = tool 'M3'
-
-    sh "${mvnHome}/bin/mvn ${args}"
-}
-
-def notify(status, color) {
-    slackSend(color: color, message: "${status}: ${env.JOB_NAME} <${env.BUILD_URL}|#${env.BUILD_NUMBER}>")
+    stage("Code Analysis") {
+      container("maven") {
+        try {
+          butler.mvn_sonar()
+        } catch (e) {
+          butler.failure(SLACK_TOKEN_DEV, "Code Analysis")
+          throw e
+        }
+      }
+    }
+    if (BRANCH_NAME == "master") {
+      stage("Deploy Nexus") {
+        container("maven") {
+          try {
+            butler.mvn_deploy()
+            butler.success(SLACK_TOKEN_DEV, "Deploy")
+          } catch (e) {
+            butler.failure(SLACK_TOKEN_DEV, "Deploy")
+            throw e
+          }
+        }
+      }
+    }
+  }
 }
